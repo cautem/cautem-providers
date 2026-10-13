@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [v0.1.7] - 2026-10-13
+
+### Changed
+
+- Split provider profile loading, discovery, composition, and validation into focused source files without changing the public API.
+
 ## [v0.1.6] - 2026-10-11
 
 ### Changed
