@@ -266,11 +266,6 @@ func TestFindBuiltinDirResolvesSiblingProviderModule(t *testing.T) {
 	if err := os.MkdirAll(profilesDir, 0o700); err != nil {
 		t.Fatal(err)
 	}
-	profilesDir, err := filepath.EvalSymlinks(profilesDir)
-	if err != nil {
-		t.Fatal(err)
-	}
-
 	workingDir, err := os.Getwd()
 	if err != nil {
 		t.Fatal(err)
@@ -284,7 +279,16 @@ func TestFindBuiltinDirResolvesSiblingProviderModule(t *testing.T) {
 		}
 	})
 
-	if got := FindBuiltinDir(); got != profilesDir {
+	got := FindBuiltinDir()
+	gotInfo, err := os.Stat(got)
+	if err != nil {
+		t.Fatalf("FindBuiltinDir() = %q: %v", got, err)
+	}
+	wantInfo, err := os.Stat(profilesDir)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !os.SameFile(gotInfo, wantInfo) {
 		t.Fatalf("FindBuiltinDir() = %q, want sibling provider catalog %q", got, profilesDir)
 	}
 }
