@@ -1,6 +1,6 @@
 # Roadmap — cautem-providers
 
-Status: **v0.1.7** (release prepared) · Depends on [cautem-core](https://github.com/cautem/cautem-core) `v0.2.0`
+Status: **v0.1.8** (release prepared) · Depends on [cautem-core](https://github.com/cautem/cautem-core) `v0.3.0`
 
 ## This module
 
@@ -12,4 +12,4 @@ Status: **v0.1.7** (release prepared) · Depends on [cautem-core](https://github
 
 ## Release
 
-Requires cautem-core `v0.2.0` · tagged after core in the cascade.
+Requires cautem-core `v0.3.0` · tagged after core in the cascade.

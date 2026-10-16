@@ -31,17 +31,18 @@ type Discovery struct {
 // Values live in the gateway secret store; guests see cautem:resolve:env:KEY
 // placeholders unless InjectEnv is false (sidecar-only — Cursor OAuth path).
 type Credential struct {
-	Name         string             `yaml:"name" json:"name"`
-	Description  string             `yaml:"description,omitempty" json:"description,omitempty"`
-	EnvVars      []string           `yaml:"env_vars,omitempty" json:"env_vars,omitempty"`
-	AuthStyle    string             `yaml:"auth_style,omitempty" json:"auth_style,omitempty"`
-	Header       string             `yaml:"header_name,omitempty" json:"header_name,omitempty"`
-	QueryParam   string             `yaml:"query_param,omitempty" json:"query_param,omitempty"`
-	PathTemplate string             `yaml:"path_template,omitempty" json:"path_template,omitempty"`
-	Required     bool               `yaml:"required,omitempty" json:"required,omitempty"`
-	Secret       bool               `yaml:"secret,omitempty" json:"secret,omitempty"`
-	Refresh      *CredentialRefresh `yaml:"refresh,omitempty" json:"refresh,omitempty"`
-	TokenGrant   *TokenGrant        `yaml:"token_grant,omitempty" json:"token_grant,omitempty"`
+	Name              string             `yaml:"name" json:"name"`
+	Description       string             `yaml:"description,omitempty" json:"description,omitempty"`
+	EnvVars           []string           `yaml:"env_vars,omitempty" json:"env_vars,omitempty"`
+	AuthStyle         string             `yaml:"auth_style,omitempty" json:"auth_style,omitempty"`
+	Header            string             `yaml:"header_name,omitempty" json:"header_name,omitempty"`
+	QueryParam        string             `yaml:"query_param,omitempty" json:"query_param,omitempty"`
+	PathTemplate      string             `yaml:"path_template,omitempty" json:"path_template,omitempty"`
+	Required          bool               `yaml:"required,omitempty" json:"required,omitempty"`
+	Secret            bool               `yaml:"secret,omitempty" json:"secret,omitempty"`
+	StablePlaceholder bool               `yaml:"stable_placeholder,omitempty" json:"stable_placeholder,omitempty"`
+	Refresh           *CredentialRefresh `yaml:"refresh,omitempty" json:"refresh,omitempty"`
+	TokenGrant        *TokenGrant        `yaml:"token_grant,omitempty" json:"token_grant,omitempty"`
 	// InjectEnv controls guest env placeholders. nil/omitted → true.
 	// Set false for agents that client-validate API keys (e.g. Cursor Agent).
 	InjectEnv *bool `yaml:"inject_env,omitempty" json:"inject_env,omitempty"`
