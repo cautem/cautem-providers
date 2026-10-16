@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [v0.1.8] - 2026-10-16
+
+### Fixed
+
+- Reject stable credential placeholders until endpoint-bound runtime credential handles are supported.
+
 ## [v0.1.7] - 2026-10-13
 
 ### Changed

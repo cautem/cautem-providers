@@ -19,7 +19,7 @@ type Layer struct {
 // OmitProviderComposed removes network_policies rules whose id is prefixed with
 // "provider." (stamped by EffectivePolicy). Use when accepting a policy set that may have
 // been edited from `policy get --full` so provider-composed entries are not duplicated
-// into the durable base (OpenShell: edit --base, not --full).
+// into the durable base when edit --base is selected, not --full.
 func OmitProviderComposed(doc policy.Document) (policy.Document, int) {
 	allows := doc.NetworkAllows()
 	if len(allows) == 0 {

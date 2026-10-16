@@ -118,6 +118,9 @@ func validateTokenEndpoint(raw string) error {
 // so import/export compatibility never implies a working credential flow.
 func (p Profile) ValidateRuntime() error {
 	for i, credential := range p.Credentials {
+		if credential.StablePlaceholder {
+			return fmt.Errorf("provider profile %q: credentials[%d].stable_placeholder requires endpoint-bound runtime credential handles, which are not supported by this runtime", p.ID, i)
+		}
 		if credential.TokenGrant != nil {
 			grant := strings.ToLower(strings.ReplaceAll(credential.TokenGrant.GrantType, "-", "_"))
 			switch grant {

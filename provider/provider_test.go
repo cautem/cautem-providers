@@ -48,7 +48,7 @@ endpoints:
 	}
 }
 
-func TestOpenShellProviderProfileFixtures(t *testing.T) {
+func TestCompatProviderProfileFixtures(t *testing.T) {
 	entries, err := os.ReadDir(filepath.Join("testdata", "openshell"))
 	if err != nil {
 		t.Fatal(err)
@@ -69,7 +69,7 @@ func TestOpenShellProviderProfileFixtures(t *testing.T) {
 	}
 }
 
-func TestOpenShellExtendedProfileFieldsRoundTrip(t *testing.T) {
+func TestCompatExtendedProfileFieldsRoundTrip(t *testing.T) {
 	input := []byte(`id: custom
 resource_version: 7
 annotations: {source: "migration"}
@@ -185,6 +185,19 @@ func TestRuntimeValidationAcceptsImplementedTokenGrantAndRejectsMissingSubject(t
 	}
 }
 
+func TestStablePlaceholderIsParsedButRejectedForRuntimeUse(t *testing.T) {
+	profile, err := ParseYAML([]byte("id: external-auth\ncredentials:\n  - name: assertion\n    env_vars: [EXTERNAL_ASSERTION]\n    stable_placeholder: true\n"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !profile.Credentials[0].StablePlaceholder {
+		t.Fatal("stable_placeholder was not retained during profile parsing")
+	}
+	if err := profile.ValidateRuntime(); err == nil || !strings.Contains(err.Error(), "endpoint-bound runtime credential handles") {
+		t.Fatalf("runtime validation error = %v", err)
+	}
+}
+
 func TestProfileRejectsInsecurePublicTokenEndpoint(t *testing.T) {
 	for _, endpoint := range []string{"http://issuer.example/token", "file:///tmp/token", "https://user:pass@issuer.example/token"} {
 		profile := Profile{ID: "sample", Credentials: []Credential{{
@@ -284,7 +297,7 @@ func TestDiscoverEnvVars(t *testing.T) {
 	}
 }
 
-func TestOpenShellVertexConfigDiscovery(t *testing.T) {
+func TestCompatVertexConfigDiscovery(t *testing.T) {
 	for _, key := range []string{"VERTEX_AI_PROJECT_ID", "VERTEX_AI_REGION", "GOOGLE_VERTEX_AI_BASE_URL", "VERTEX_AI_BASE_URL", "VERTEX_AI_PUBLISHER"} {
 		t.Setenv(key, " ")
 	}
