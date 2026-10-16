@@ -1,6 +1,6 @@
 package provider
 
-import "github.com/cautem/cautem-core/policy"
+import "github.com/cautem/quarshell-core/policy"
 
 // Profile is a reusable provider type (catalog entry).
 type Profile struct {
