@@ -199,12 +199,13 @@ func EffectivePolicy(base policy.Document, layers []Layer, suppressProviders boo
 	return out, nil
 }
 
-// FindBuiltinDir locates a providers catalog directory (cwd or next to the executable).
+// FindBuiltinDir locates built-in profiles in the workspace or beside the executable.
 func FindBuiltinDir() string {
 	candidates := []string{}
 	if wd, err := os.Getwd(); err == nil {
 		candidates = append(candidates,
 			filepath.Join(wd, "cautem-providers", "profiles"),
+			filepath.Join(filepath.Dir(wd), "cautem-providers", "profiles"),
 			filepath.Join(wd, "cautem-cli", "providers"),
 			filepath.Join(wd, "providers"),
 			filepath.Join(wd, "profiles"),
