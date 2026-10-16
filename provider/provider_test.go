@@ -256,6 +256,43 @@ func TestLoadDirRejectsDuplicateProfileIDs(t *testing.T) {
 	}
 }
 
+func TestFindBuiltinDirResolvesSiblingProviderModule(t *testing.T) {
+	root := t.TempDir()
+	consumerDir := filepath.Join(root, "cautem-cli")
+	profilesDir := filepath.Join(root, "cautem-providers", "profiles")
+	if err := os.MkdirAll(consumerDir, 0o700); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.MkdirAll(profilesDir, 0o700); err != nil {
+		t.Fatal(err)
+	}
+	workingDir, err := os.Getwd()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := os.Chdir(consumerDir); err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() {
+		if err := os.Chdir(workingDir); err != nil {
+			t.Errorf("restore working directory: %v", err)
+		}
+	})
+
+	got := FindBuiltinDir()
+	gotInfo, err := os.Stat(got)
+	if err != nil {
+		t.Fatalf("FindBuiltinDir() = %q: %v", got, err)
+	}
+	wantInfo, err := os.Stat(profilesDir)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !os.SameFile(gotInfo, wantInfo) {
+		t.Fatalf("FindBuiltinDir() = %q, want sibling provider catalog %q", got, profilesDir)
+	}
+}
+
 func TestDiscoverEnvVars(t *testing.T) {
 	p := Profile{
 		ID:        "github",
