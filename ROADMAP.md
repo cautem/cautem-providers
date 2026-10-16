@@ -1,6 +1,6 @@
 # Roadmap — cautem-providers
 
-Status: **v0.1.8** (release prepared) · Depends on [cautem-core](https://github.com/cautem/cautem-core) `v0.3.0`
+Status: **v0.1.8** (release prepared) · Depends on [cautem-core](https://github.com/cautem/quarshell-core) `v0.3.0`
 
 ## This module
 

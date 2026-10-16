@@ -45,7 +45,7 @@ For now, build against sibling checkouts through `go.work` and run `go test ./..
 
 ```go
 import (
-    "github.com/cautem/cautem-core/policy"
+    "github.com/cautem/quarshell-core/policy"
     "github.com/cautem/quarshell-providers/provider"
 )
 
