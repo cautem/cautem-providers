@@ -35,7 +35,7 @@ jobs:
       - name: Checkout cautem-core
         uses: actions/checkout@v4
         with:
-          repository: cautem/cautem-core
+          repository: cautem/quarshell-core
           path: cautem-core
           ref: 3e8578194f94048a5c2619d2e1411eac546de985
 
@@ -104,7 +104,7 @@ jobs:
       - name: Checkout cautem-core
         uses: actions/checkout@v4
         with:
-          repository: cautem/cautem-core
+          repository: cautem/quarshell-core
           path: cautem-core
           ref: 3e8578194f94048a5c2619d2e1411eac546de985
 
@@ -173,7 +173,7 @@ jobs:
       - name: Checkout cautem-core
         uses: actions/checkout@v4
         with:
-          repository: cautem/cautem-core
+          repository: cautem/quarshell-core
           path: cautem-core
           ref: 3e8578194f94048a5c2619d2e1411eac546de985
 
@@ -240,7 +240,7 @@ jobs:
       - name: Checkout cautem-core
         uses: actions/checkout@v4
         with:
-          repository: cautem/cautem-core
+          repository: cautem/quarshell-core
           path: cautem-core
           ref: 3e8578194f94048a5c2619d2e1411eac546de985
 

@@ -1,4 +1,4 @@
-module github.com/cautem/cautem-providers
+module github.com/cautem/quarshell-providers
 
 go 1.27.0
 

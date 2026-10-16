@@ -5,10 +5,10 @@
   Builtin provider profiles and effective-policy composition for sandboxes.
 </p>
 <p align="center">
-  <a href="https://github.com/cautem/cautem-providers/actions/workflows/ci.yml"><img src="https://github.com/cautem/cautem-providers/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
-  <a href="https://pkg.go.dev/github.com/cautem/cautem-providers"><img src="https://pkg.go.dev/badge/github.com/cautem/cautem-providers.svg" alt="Go Reference"></a>
+  <a href="https://github.com/cautem/quarshell-providers/actions/workflows/ci.yml"><img src="https://github.com/cautem/quarshell-providers/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://pkg.go.dev/github.com/cautem/quarshell-providers"><img src="https://pkg.go.dev/badge/github.com/cautem/quarshell-providers.svg" alt="Go Reference"></a>
   <a href="https://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/License-Apache--2.0-blue.svg" alt="License"></a>
-  <a href="https://github.com/cautem/cautem-providers"><img src="https://img.shields.io/badge/Go-1.27+-00ADD8?logo=go" alt="Go Version"></a>
+  <a href="https://github.com/cautem/quarshell-providers"><img src="https://img.shields.io/badge/Go-1.27+-00ADD8?logo=go" alt="Go Version"></a>
 </p>
 <p align="center">
   <sub>Part of the <a href="https://github.com/cautem">cautem / cautem</a> ecosystem</sub>
@@ -46,7 +46,7 @@ For now, build against sibling checkouts through `go.work` and run `go test ./..
 ```go
 import (
     "github.com/cautem/cautem-core/policy"
-    "github.com/cautem/cautem-providers/provider"
+    "github.com/cautem/quarshell-providers/provider"
 )
 
 base, _ := policy.Load("base.yaml")
@@ -87,7 +87,7 @@ storage determines their authoritative values.
 | Roadmap | [ROADMAP.md](./ROADMAP.md) |
 | Organization | [https://github.com/cautem](https://github.com/cautem) |
 | Organization overview | [github.com/cautem](https://github.com/cautem) |
-| pkg.go.dev | [`github.com/cautem/cautem-providers`](https://pkg.go.dev/github.com/cautem/cautem-providers) |
+| pkg.go.dev | [`github.com/cautem/quarshell-providers`](https://pkg.go.dev/github.com/cautem/quarshell-providers) |
 
 ## License
 
